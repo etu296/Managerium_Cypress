@@ -23,11 +23,20 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import {createBankAccount,login} from "../e2e/MGM/helper";
+import {collectionReceive,createFieldCollection,createPurchaseReceive,createBankAccount,login} from "../e2e/MGM/helper";
 
 Cypress.Commands.add("login", (userId, password) => {
   login(userId, password);
 })
 Cypress.Commands.add("createBankAccount", (accountName,bankAccountNumber,bankShortName) => {
   createBankAccount(accountName,bankAccountNumber,bankShortName);
+})
+Cypress.Commands.add("createPurchaseReceive", (quantity,rate) => {
+  createPurchaseReceive(quantity,rate);
+})
+Cypress.Commands.add("createFieldCollection", (amount) => {
+  createFieldCollection(amount);
+})
+Cypress.Commands.add("collectionReceive", () => {
+  collectionReceive();
 })
