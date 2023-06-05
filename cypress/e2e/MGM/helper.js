@@ -7,7 +7,7 @@
       }
     });
     cy.viewport(1920, 1080);
-    cy.visit("https://devmgm.ibos.io/");
+    cy.visit("https://dev-mgm.ibos.io/");
         cy.get("#loginMobileNo").eq(0).click({force:true}).type(userId);
         cy.get("#loginPassword").eq(0).click({force:true}).type(password);
         cy.get("form").submit();
@@ -27,7 +27,7 @@
       }
     });
 
-    cy.visit("https://devmgm.ibos.io/accounts/bankAccount");
+    cy.visit("https://dev-mgm.ibos.io/accounts/bankAccount");
     cy.get(".btn").eq(2).click({force:true});
     cy.wait(1000);
     cy.get(".form-control").eq(0).click({force:true}).type(accountName);
@@ -69,7 +69,7 @@
         return false;
       }
     });
-    cy.visit("https://devmgm.ibos.io/purchase/goodsReceive");
+    cy.visit("https://dev-mgm.ibos.io/purchase/goodsReceive");
         cy.get("#demo-positioned-button").eq(0).click({force:true});
         cy.get("#supplier > div")
         .click({ force: true })
@@ -99,7 +99,7 @@
         return false;
       }
     });
-    cy.visit("https://devmgm.ibos.io/sales/fieldCollection");
+    cy.visit("https://dev-mgm.ibos.io/sales/fieldCollection");
     cy.wait(1000);
        cy.get(".btn").eq(2).click({force:true});
        cy.wait(1000);
