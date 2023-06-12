@@ -110,7 +110,7 @@
        cy.wait(2000);
        cy.get("#customer > div")
        .click({ force: true })
-       .get("#react-select-mgm-option-21")
+       .get("#react-select-mgm-option-5")
        .type("{enter}",{force: true});
        cy.wait(2000);
        cy.get("#collectionType > div")
@@ -132,9 +132,11 @@
         return false;
       }
     });
-    cy.visit("https://devmgm.ibos.io/sales/fieldCollection");
+    cy.visit("https://dev-mgm.ibos.io/sales/fieldCollection");
     cy.wait(1000);
-    cy.get('[type="checkbox"]').eq(29).check({ force: true });
-    cy.wait(1000);
+    cy.get('[type="checkbox"]').eq(1).check({ force: true });
+    cy.wait(2000);
     cy.get('.btn').eq(4).click({force:true});
+    cy.wait(2000);
+    
   };
