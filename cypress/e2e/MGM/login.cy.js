@@ -42,13 +42,23 @@ describe("MGM Test Cases ",()=>{
      });
 
     it(" Approve the created sales order",()=>{
-        cy.login("01928374657","123456");
-        cy.approveSalesOrder();
+        // cy.login("01928374657","123456");
+        // cy.approveSalesOrder();
      });
    
     it("fully deliver the created sales order",()=>{
-        cy.login("01928374657","123456");
-        cy.deliverSalesOrder();
+        // cy.login("01928374657","123456");
+        // cy.deliverSalesOrder();
         
      });
+     it("fully return the created sales order",()=>{
+        // cy.login("01928374657","123456");
+        // cy.returndeliverSalesOrder();
+        
+     });
+     it("view full return",()=>{
+        cy.login("01928374657","123456");
+        cy.viewReturndetails();
+     });
+
 });

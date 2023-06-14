@@ -23,7 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import {approveSalesOrder,deliverSalesOrder,approveSalesQuotation,orderFromQuotation,editsalesQuotation,createSalesQuotationLine,createSalesQuotationGross,collectionReceive,createFieldCollection,createPurchaseReceive,createBankAccount,login} from "../e2e/MGM/helper";
+import {viewReturndetails,approveSalesOrder,returndeliverSalesOrder,deliverSalesOrder,approveSalesQuotation,orderFromQuotation,editsalesQuotation,createSalesQuotationLine,createSalesQuotationGross,collectionReceive,createFieldCollection,createPurchaseReceive,createBankAccount,login} from "../e2e/MGM/helper";
 
 Cypress.Commands.add("login", (userId, password) => {
   login(userId, password);
@@ -54,6 +54,12 @@ Cypress.Commands.add("orderFromQuotation", () => {
 })
 Cypress.Commands.add("deliverSalesOrder", () => {
   deliverSalesOrder();
+})
+Cypress.Commands.add("returndeliverSalesOrder", () => {
+  returndeliverSalesOrder();
+})
+Cypress.Commands.add("viewReturndetails", () => {
+  viewReturndetails();
 })
 Cypress.Commands.add("approveSalesQuotation", () => {
   approveSalesQuotation();

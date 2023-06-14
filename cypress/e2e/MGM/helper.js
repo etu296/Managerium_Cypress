@@ -331,9 +331,49 @@
     cy.wait(2000);
     cy.get('.MuiButtonBase-root').eq(3).click({force:true});
     cy.wait(2000);
-
- 
   };
+    //Full Return the created sales order
+    export const returndeliverSalesOrder = () => {
+      const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+      Cypress.on("uncaught:exception", (err) => {
+        /* returning false here prevents Cypress from failing the test */
+        if (resizeObserverLoopErrRe.test(err.message)) {
+          return false;
+        }
+      });
+      cy.visit("https://mgm.ibos.io/sales/salesReturn");
+      cy.wait(1000);
+      cy.get('.text-decoration-underline ').eq(0).click({force:true});
+      cy.wait(2000);
+      cy.get("#office > div")
+         .click({ force: true })
+         .get("#react-select-mgm-option-0")
+         .type("{enter}",{force: true});
+      cy.wait(2000);
+      cy.get("#warehouse > div")
+         .click({ force: true })
+         .get("#react-select-mgm-option-0")
+         .type("{enter}",{force: true});
+      cy.wait(2000);
+      cy.get("form").submit();
+      cy.wait(2000);
+    };
+    //view return details
+    export const viewReturndetails = () => {
+      const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+      Cypress.on("uncaught:exception", (err) => {
+        /* returning false here prevents Cypress from failing the test */
+        if (resizeObserverLoopErrRe.test(err.message)) {
+          return false;
+        }
+      });
+      cy.visit("https://mgm.ibos.io/sales/salesReturn");
+      cy.wait(1000);
+      cy.get('.MuiButtonBase-root').eq(3).click({force:true});
+      cy.wait(2000);
+      cy.get('.MuiSvgIcon-root').eq(26).click({force:true});
+      cy.wait(2000);
+    };
   //sales quotation approval
   export const approveSalesQuotation = () => {
     const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
