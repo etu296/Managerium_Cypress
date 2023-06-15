@@ -23,7 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import {viewReturndetails,approveSalesOrder,returndeliverSalesOrder,deliverSalesOrder,approveSalesQuotation,orderFromQuotation,editsalesQuotation,createSalesQuotationLine,createSalesQuotationGross,collectionReceive,createFieldCollection,createPurchaseReceive,createBankAccount,login} from "../e2e/MGM/helper";
+import {viewAccountingJournal,ApproveFullReturn,viewReturndetails,approveSalesOrder,returndeliverSalesOrder,deliverSalesOrder,approveSalesQuotation,orderFromQuotation,editsalesQuotation,createSalesQuotationLine,createSalesQuotationGross,collectionReceive,createFieldCollection,createPurchaseReceive,createBankAccount,login} from "../e2e/MGM/helper";
 
 Cypress.Commands.add("login", (userId, password) => {
   login(userId, password);
@@ -40,7 +40,7 @@ Cypress.Commands.add("createFieldCollection", (amount) => {
 Cypress.Commands.add("collectionReceive", () => {
   collectionReceive();
 })
-Cypress.Commands.add("createSalesQuotationGross ", (quantity,rate,grossDiscount) => {
+Cypress.Commands.add("createSalesQuotationGross", (quantity,rate,grossDiscount) => {
   createSalesQuotationGross (quantity,rate,grossDiscount);
 })
 Cypress.Commands.add("createSalesQuotationLine", (quantity1,rate1,lineDiscount1,quantity2,rate2,lineDiscount2,quantity3,rate3,lineDiscount3) => {
@@ -66,4 +66,10 @@ Cypress.Commands.add("approveSalesQuotation", () => {
 })
 Cypress.Commands.add("approveSalesOrder", () => {
   approveSalesOrder();
+})
+Cypress.Commands.add("ApproveFullReturn", () => {
+  ApproveFullReturn();
+})
+Cypress.Commands.add("viewAccountingJournal", (dateToEnter) => {
+  viewAccountingJournal(dateToEnter);
 })

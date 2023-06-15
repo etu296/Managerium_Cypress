@@ -158,7 +158,7 @@
     cy.wait(1000);
     cy.get("#customer > div")
     .click({ force: true })
-    .get("#react-select-mgm-option-5")
+    .get("#react-select-mgm-option-3")
     .type("{enter}",{force: true});
     cy.wait(1000);
     cy.get("#item > div")
@@ -198,7 +198,7 @@
     cy.get(".form-control").eq(36).click({force:true}).type(grossDiscount);
     cy.wait(1000);
     cy.get("form").submit();
-    
+    cy.wait(1000);
   };
   //sales quotation line discount only 
   export const createSalesQuotationLine = (quantity1,rate1,lineDiscount1,quantity2,rate2,lineDiscount2,quantity3,rate3,lineDiscount3) => {
@@ -414,3 +414,56 @@
     cy.get('.MuiButtonBase-root').eq(6).click({force:true});
     cy.wait(2000);
   };
+   //sales return (full) approval
+   export const ApproveFullReturn = () => {
+    const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+    Cypress.on("uncaught:exception", (err) => {
+      /* returning false here prevents Cypress from failing the test */
+      if (resizeObserverLoopErrRe.test(err.message)) {
+        return false;
+      }
+    });
+    cy.visit("https://mgm.ibos.io/commonapproval");
+    cy.wait(1000);
+    cy.get('.rowItem').eq(5).click({force:true});
+    cy.wait(2000);
+    cy.get('[type="checkbox"]').eq(1).check({ force: true });
+    cy.wait(2000);
+    cy.get('.btn').eq(3).click({force:true});
+    cy.wait(2000);
+    cy.get('.MuiButtonBase-root').eq(4).click({force:true});
+    cy.wait(2000);
+  };
+    //view Accounting journal After full return
+    export const viewAccountingJournal = (dateToEnter) => {
+      const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+      Cypress.on("uncaught:exception", (err) => {
+        /* returning false here prevents Cypress from failing the test */
+        if (resizeObserverLoopErrRe.test(err.message)) {
+          return false;
+        }
+      });     
+      cy.visit("https://mgm.ibos.io/accounts/businessTransaction");
+      cy.wait(1000);
+      cy.get("#office > div")
+      .click({ force: true })
+      .get("#react-select-mgm-option-0")
+      .type("{enter}",{force: true});
+      cy.wait(2000);
+      //pick input date type
+      cy.get('.form-control').eq(0).click({ force: true });
+      cy.wait(2000);
+      cy.get('input[name="fromDate"]').clear().type(dateToEnter);
+      cy.wait(2000);
+      cy.get('.form-control').eq(1).click({ force: true });
+      cy.wait(2000);
+      cy.get('input[name="toDate"]').clear().type(dateToEnter);
+      //pick input date type
+      cy.wait(2000);
+      cy.get('.btn').eq(3).click({force:true});
+      cy.wait(2000);
+      cy.get('.MuiTableRow-root').eq(1).click({force:true});
+      cy.wait(3000);
+      cy.get('.MuiButtonBase-root').eq(3).click({force:true});
+      cy.wait(1000);
+    };
