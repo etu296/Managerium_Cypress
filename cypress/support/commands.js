@@ -73,3 +73,20 @@ Cypress.Commands.add("ApproveFullReturn", () => {
 Cypress.Commands.add("viewAccountingJournal", (dateToEnter) => {
   viewAccountingJournal(dateToEnter);
 })
+//ipos commands for test case
+import{iposlogin}from "../e2e/MGM/ipos_helper";
+
+Cypress.Commands.add("iposlogin",(userId, password)=>{
+  iposlogin(userId, password);
+})
+
+ // sales direct delivery
+import{createDirectSalesInclusive,createDirectSalesExclusive}from "../e2e/MGM/sales_helper";
+
+Cypress.Commands.add("createDirectSalesExclusive",(quantity,rate,discount,VAT,AIT)=>{
+  createDirectSalesExclusive(quantity,rate,discount,VAT,AIT);
+})
+
+Cypress.Commands.add("createDirectSalesInclusive",(quantity,rate,discount,VAT,AIT)=>{
+  createDirectSalesInclusive(quantity,rate,discount,VAT,AIT);
+})

@@ -55,6 +55,8 @@ it("should be create a sales quotation with 3 item & gross discount only & Appro
         cy.viewAccountingJournal(dateToEnter);
         //date type pick
      });
+   
+
 
 
     });

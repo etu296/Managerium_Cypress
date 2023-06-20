@@ -1,6 +1,6 @@
 describe("MGM Test Cases ",()=>{
     it("should be login  with valid info",()=>{
-        // cy.login("01928374657","123456");
+        cy.login("01928374657","123456");
       
     });
     it("should be Create a Bank Account,view details & close ",()=>{
