@@ -81,7 +81,7 @@ Cypress.Commands.add("iposlogin",(userId, password)=>{
 })
 
  // sales direct delivery
-import{createDirectSalesInclusive,createDirectSalesExclusive}from "../e2e/MGM/sales_helper";
+import{createSalesOrderExclusive,createSalesOrderInclusive,createDirectSalesInclusive,createDirectSalesExclusive}from "../e2e/MGM/sales_helper";
 
 Cypress.Commands.add("createDirectSalesExclusive",(quantity,rate,discount,VAT,AIT)=>{
   createDirectSalesExclusive(quantity,rate,discount,VAT,AIT);
@@ -89,4 +89,12 @@ Cypress.Commands.add("createDirectSalesExclusive",(quantity,rate,discount,VAT,AI
 
 Cypress.Commands.add("createDirectSalesInclusive",(quantity,rate,discount,VAT,AIT)=>{
   createDirectSalesInclusive(quantity,rate,discount,VAT,AIT);
+})
+//sales order
+Cypress.Commands.add("createSalesOrderExclusive",(quantity,rate,discount,VAT,AIT)=>{
+  createSalesOrderExclusive(quantity,rate,discount,VAT,AIT);
+})
+
+Cypress.Commands.add("createSalesOrderInclusive",(quantity,rate,discount,VAT,AIT)=>{
+  createSalesOrderInclusive(quantity,rate,discount,VAT,AIT);
 })

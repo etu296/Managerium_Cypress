@@ -331,6 +331,9 @@
     cy.wait(2000);
     cy.get('.MuiButtonBase-root').eq(3).click({force:true});
     cy.wait(2000);
+    cy.get('.MuiSvgIcon-root').eq(27).click({force:true});
+    cy.wait(2000);
+
   };
     //Full Return the created sales order
     export const returndeliverSalesOrder = () => {
@@ -385,7 +388,7 @@
     });
     cy.visit("https://mgm.ibos.io/commonapproval");
     cy.wait(1000);
-    cy.get('.rowItem').eq(3).click({force:true});
+    cy.get('.rowItem').eq(2).click({force:true});
     cy.wait(2000);
     cy.get('[type="checkbox"]').eq(1).check({ force: true });
     cy.wait(2000);
@@ -405,7 +408,7 @@
     });
     cy.visit("https://mgm.ibos.io/commonapproval");
     cy.wait(1000);
-    cy.get('.rowItem').eq(4).click({force:true});
+    cy.get('.rowItem').eq(3).click({force:true});
     cy.wait(2000);
     cy.get('[type="checkbox"]').eq(1).check({ force: true });
     cy.wait(2000);
@@ -425,7 +428,7 @@
     });
     cy.visit("https://mgm.ibos.io/commonapproval");
     cy.wait(1000);
-    cy.get('.rowItem').eq(5).click({force:true});
+    cy.get('.rowItem').eq(4).click({force:true});
     cy.wait(2000);
     cy.get('[type="checkbox"]').eq(1).check({ force: true });
     cy.wait(2000);
