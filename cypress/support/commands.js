@@ -74,10 +74,19 @@ Cypress.Commands.add("viewAccountingJournal", (dateToEnter) => {
   viewAccountingJournal(dateToEnter);
 })
 //ipos commands for test case
-import{iposlogin}from "../e2e/MGM/ipos_helper";
+// import{iposlogin}from "../e2e/MGM/ipos_helper";
 
-Cypress.Commands.add("iposlogin",(userId, password)=>{
-  iposlogin(userId, password);
+// Cypress.Commands.add("iposlogin",(userId, password)=>{
+//   iposlogin(userId, password);
+// })
+//ipos commands for test case
+import{ApproveItemRequest,createItemRequest }from "../e2e/MGM/item_request_helper";
+
+Cypress.Commands.add("createItemRequest",(RequestQuantity)=>{
+  createItemRequest(RequestQuantity);
+})
+Cypress.Commands.add("ApproveItemRequest",()=>{
+  ApproveItemRequest();
 })
 
  // sales direct delivery
