@@ -48,7 +48,7 @@
      //add requesting item
      cy.get("#item > div")
      .click({ force: true })
-     .get("#react-select-mgm-option-8")
+     .get("#react-select-mgm-option-0")
      .type("{enter}",{force: true});
      cy.wait(2000);
    // add requiesting quantity

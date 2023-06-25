@@ -90,7 +90,7 @@ Cypress.Commands.add("ApproveItemRequest",()=>{
 })
 
  // sales direct delivery
-import{createSalesOrderExclusive,createSalesOrderInclusive,createDirectSalesInclusive,createDirectSalesExclusive}from "../e2e/MGM/sales_helper";
+import{PartialdeliverSalesOrder,createSalesOrderExclusive,createSalesOrderInclusive,createDirectSalesInclusive,createDirectSalesExclusive}from "../e2e/MGM/sales_helper";
 
 Cypress.Commands.add("createDirectSalesExclusive",(quantity,rate,discount,VAT,AIT)=>{
   createDirectSalesExclusive(quantity,rate,discount,VAT,AIT);
@@ -106,4 +106,8 @@ Cypress.Commands.add("createSalesOrderExclusive",(quantity,rate,discount,VAT,AIT
 
 Cypress.Commands.add("createSalesOrderInclusive",(quantity,rate,discount,VAT,AIT)=>{
   createSalesOrderInclusive(quantity,rate,discount,VAT,AIT);
+})
+//partial sales delivery
+Cypress.Commands.add("PartialdeliverSalesOrder",(deliverQuantity1,deliverQuantity2,deliverQuantity3)=>{
+  PartialdeliverSalesOrder(deliverQuantity1,deliverQuantity2,deliverQuantity3);
 })

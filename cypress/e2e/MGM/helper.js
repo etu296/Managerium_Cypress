@@ -414,7 +414,7 @@
     cy.wait(2000);
     cy.get('.btn').eq(3).click({force:true});
     cy.wait(2000);
-    cy.get('.MuiButtonBase-root').eq(6).click({force:true});
+    cy.get('.MuiButtonBase-root').eq(5).click({force:true});
     cy.wait(2000);
   };
    //sales return (full) approval

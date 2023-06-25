@@ -179,8 +179,8 @@
     cy.wait(1000);
     cy.get('.MuiButtonBase-root').eq(1).click({ force: true });
     cy.wait(1000);
-    cy.get(".MuiButtonBase-root").eq(6).click({force:true});
-    cy.wait(2000);
+    // cy.get(".MuiButtonBase-root").eq(6).click({force:true});
+    // cy.wait(2000);
     // add 1st item
     cy.get("#customer > div")
     .click({ force: true })
@@ -202,7 +202,7 @@
     cy.wait(2000);
     cy.get(".form-control").eq(12).click({force:true}).type(AIT);
     cy.wait(2000);
-    cy.get(".btn").eq(6).click({ force: true });
+    cy.get(".btn").eq(5).click({ force: true });
     cy.wait(2000);
 //  add 2nd item
     cy.get("#item > div")
@@ -218,7 +218,7 @@
     cy.wait(2000);
     cy.get(".form-control").eq(11).click({force:true}).type(VAT);
     cy.wait(2000);
-    cy.get(".btn").eq(6).click({ force: true });
+    cy.get(".btn").eq(5).click({ force: true });
     cy.wait(2000);
     // add 3rd item 
     cy.get("#item > div")
@@ -234,7 +234,7 @@
     cy.wait(2000);
     cy.get(".form-control").eq(12).click({force:true}).type(AIT);
     cy.wait(2000);
-    cy.get(".btn").eq(6).click({ force: true });
+    cy.get(".btn").eq(5).click({ force: true });
     cy.wait(2000);
 
     // cy.get(".form-control").eq(36).click({force:true}).type(discount);
@@ -261,8 +261,8 @@
     cy.wait(1000);
     cy.get('.MuiButtonBase-root').eq(1).click({ force: true });
     cy.wait(1000);
-    cy.get(".MuiButtonBase-root").eq(6).click({force:true});
-    cy.wait(2000);
+    // cy.get(".MuiButtonBase-root").eq(6).click({force:true});
+    // cy.wait(2000);
     // add 1st item
     cy.get(".PrivateSwitchBase-input").eq(1).click({force: true });
     cy.wait(1000);
@@ -289,7 +289,7 @@
     cy.wait(2000);
     cy.get(".form-control").eq(12).click({force:true}).type(AIT);
     cy.wait(2000);
-    cy.get(".btn").eq(6).click({ force: true });
+    cy.get(".btn").eq(5).click({ force: true });
     cy.wait(2000);
 //  add 2nd item
     cy.get("#item > div")
@@ -305,7 +305,7 @@
     cy.wait(2000);
     cy.get(".form-control").eq(11).click({force:true}).type(VAT);
     cy.wait(2000);
-    cy.get(".btn").eq(6).click({ force: true });
+    cy.get(".btn").eq(5).click({ force: true });
     cy.wait(2000);
     // add 3rd item 
     cy.get("#item > div")
@@ -321,7 +321,7 @@
     cy.wait(2000);
     cy.get(".form-control").eq(12).click({force:true}).type(AIT);
     cy.wait(2000);
-    cy.get(".btn").eq(6).click({ force: true });
+    cy.get(".btn").eq(5).click({ force: true });
     cy.wait(2000);
 
     // cy.get(".form-control").eq(36).click({force:true}).type(discount);
@@ -333,4 +333,42 @@
     cy.wait(1000);
     cy.get(".newBtnBackground").eq(1).click({force:true});
     
+  };
+
+   //Partially deliver the created sales order
+   export const PartialdeliverSalesOrder = (deliverQuantity1,deliverQuantity2,deliverQuantity3) => {
+    const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+    Cypress.on("uncaught:exception", (err) => {
+      /* returning false here prevents Cypress from failing the test */
+      if (resizeObserverLoopErrRe.test(err.message)) {
+        return false;
+      }
+    });
+    cy.visit("https://mgm.ibos.io/sales/goodsSales");
+    cy.wait(1000);
+    cy.get('.sales_collection_action').eq(0).click({force:true});
+    cy.wait(2000);
+    cy.get("#office > div")
+       .click({ force: true })
+       .get("#react-select-mgm-option-0")
+       .type("{enter}",{force: true});
+    cy.wait(2000);
+    cy.get("#warehouse > div")
+       .click({ force: true })
+       .get("#react-select-mgm-option-0")
+       .type("{enter}",{force: true});
+    cy.wait(2000);
+    cy.get(".form-control").eq(3).click({force:true}).type(deliverQuantity1);
+    cy.wait(1000);
+    cy.get(".form-control").eq(4).click({force:true}).type(deliverQuantity2);
+    cy.wait(1000);
+    cy.get(".form-control").eq(5).click({force:true}).type(deliverQuantity3);
+    cy.wait(1000);
+    cy.get("form").submit();
+    cy.wait(2000);
+    cy.get('.MuiButtonBase-root').eq(3).click({force:true});
+    cy.wait(2000);
+    cy.get('.MuiSvgIcon-root').eq(27).click({force:true});
+    cy.wait(2000);
+
   };
