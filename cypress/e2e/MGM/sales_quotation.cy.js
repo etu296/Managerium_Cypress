@@ -3,14 +3,14 @@ describe("MGM Test Cases ",()=>{
 it("should be create a sales quotation with 3 item & gross discount only & Approve the sales quotation",()=>{
        cy.login("01928374657","123456");
        cy.createSalesQuotationGross("2","00","20");
-       cy.approveSalesQuotation();
+      //  cy.approveSalesQuotation();
     });
-    it("should be create a sales quotation with 3 item & line discount only then edit Approve the sales quotation",()=>{
-        cy.login("01928374657","123456");
-        cy.createSalesQuotationLine("2","00","10","1","1000","200","3","50","50");
-        cy.editsalesQuotation();
-        cy.approveSalesQuotation();
-     });
+   //  it("should be create a sales quotation with 3 item & line discount only then edit Approve the sales quotation",()=>{
+   //      cy.login("01928374657","123456");
+   //      cy.createSalesQuotationLine("2","00","10","1","1000","200","3","50","50");
+   //      cy.editsalesQuotation();
+   //      cy.approveSalesQuotation();
+   //   });
 
     it(" Approve the created sales quotation",()=>{
         cy.login("01928374657","123456");

@@ -170,7 +170,7 @@
     cy.wait(1000);
     cy.get(".form-control").eq(8).click({force:true}).type(rate);
     cy.wait(2000);
-    cy.get(".btn").eq(5).click({ force: true });
+    cy.get(".btn").eq(4).click({ force: true });
     cy.wait(2000);
     cy.get("#item > div")
     .click({ force: true })
@@ -181,7 +181,7 @@
     cy.wait(1000);
     cy.get(".form-control").eq(8).click({force:true}).type("1000");
     cy.wait(2000);
-    cy.get(".btn").eq(5).click({ force: true });
+    cy.get(".btn").eq(4).click({ force: true });
     cy.wait(2000);
     cy.get("#item > div")
     .click({ force: true })
@@ -192,7 +192,7 @@
     cy.wait(1000);
     cy.get(".form-control").eq(8).click({force:true}).type("50");
     cy.wait(2000);
-    cy.get(".btn").eq(5).click({ force: true });
+    cy.get(".btn").eq(4).click({ force: true });
     cy.wait(2000);
 
     cy.get(".form-control").eq(36).click({force:true}).type(grossDiscount);
@@ -388,7 +388,7 @@
     });
     cy.visit("https://mgm.ibos.io/commonapproval");
     cy.wait(1000);
-    cy.get('.rowItem').eq(2).click({force:true});
+    cy.get('.rowItem').eq(3).click({force:true});
     cy.wait(2000);
     cy.get('[type="checkbox"]').eq(1).check({ force: true });
     cy.wait(2000);
@@ -408,7 +408,7 @@
     });
     cy.visit("https://mgm.ibos.io/commonapproval");
     cy.wait(1000);
-    cy.get('.rowItem').eq(3).click({force:true});
+    cy.get('.rowItem').eq(2).click({force:true});
     cy.wait(2000);
     cy.get('[type="checkbox"]').eq(1).check({ force: true });
     cy.wait(2000);

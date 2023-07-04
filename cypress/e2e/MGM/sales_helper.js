@@ -335,7 +335,7 @@
     
   };
 
-   //Partially deliver the created sales order
+   //Partially deliver the created sales order(with batch & serial item)
    export const PartialdeliverSalesOrder = (deliverQuantity1,deliverQuantity2,deliverQuantity3) => {
     const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
     Cypress.on("uncaught:exception", (err) => {
@@ -364,6 +364,28 @@
     cy.wait(1000);
     cy.get(".form-control").eq(5).click({force:true}).type(deliverQuantity3);
     cy.wait(1000);
+    //add batch
+    cy.get('.MuiSvgIcon-root').eq(29).click({force:true});
+    cy.wait(2000);
+    cy.get('.form-control').eq(8).click({force:true}).type('1', {force: true});
+    cy.wait(2000);
+    cy.get('.MuiButtonBase-root').eq(2).click({force:true});
+    cy.wait(2000);
+    //add serial
+    cy.get('.MuiSvgIcon-root').eq(30).click({force:true});
+    cy.wait(2000);
+    cy.get('[type="checkbox"]').eq(1).check({ force: true });
+    cy.wait(2000);
+    cy.get('.MuiButtonBase-root').eq(107).click({force:true});
+    cy.wait(2000);
+    //add batch
+    cy.get('.MuiSvgIcon-root').eq(31).click({force:true});
+    cy.wait(2000);
+    cy.get('.form-control').eq(6).click({force:true}).type('1', {force: true});
+    cy.wait(2000);
+    cy.get('.MuiButtonBase-root').eq(2).click({force:true});
+    //submit & view delivery details
+    cy.wait(2000);
     cy.get("form").submit();
     cy.wait(2000);
     cy.get('.MuiButtonBase-root').eq(3).click({force:true});
