@@ -111,3 +111,23 @@ Cypress.Commands.add("createSalesOrderInclusive",(quantity,rate,discount,VAT,AIT
 Cypress.Commands.add("PartialdeliverSalesOrder",(deliverQuantity1,deliverQuantity2,deliverQuantity3)=>{
   PartialdeliverSalesOrder(deliverQuantity1,deliverQuantity2,deliverQuantity3);
 })
+
+import{devlogin,DirectSupplierPaymentByCash,DirectSupplierPaymentByBank,viewDevAccountingJournal}from "../e2e/MGM/purchase_helper";
+//dev login
+
+Cypress.Commands.add("devlogin", (userId, password) => {
+  devlogin(userId, password);
+})
+
+//direct purchase payment by cash
+Cypress.Commands.add("DirectSupplierPaymentByCash",()=>{
+DirectSupplierPaymentByCash();
+})
+//direct purchase payment by bank
+Cypress.Commands.add("DirectSupplierPaymentByBank",()=>{
+  DirectSupplierPaymentByBank();
+  })
+  //view Dev Accounting Journal
+Cypress.Commands.add("viewDevAccountingJournal",(dateToEnter)=>{
+  viewDevAccountingJournal(dateToEnter);
+  })
