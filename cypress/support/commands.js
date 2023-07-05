@@ -28,9 +28,7 @@ import {viewAccountingJournal,ApproveFullReturn,viewReturndetails,approveSalesOr
 Cypress.Commands.add("login", (userId, password) => {
   login(userId, password);
 })
-Cypress.Commands.add("createBankAccount", (accountName,bankAccountNumber,bankShortName) => {
-  createBankAccount(accountName,bankAccountNumber,bankShortName);
-})
+
 Cypress.Commands.add("createPurchaseReceive", (quantity,rate) => {
   createPurchaseReceive(quantity,rate);
 })
@@ -131,3 +129,36 @@ Cypress.Commands.add("DirectSupplierPaymentByBank",()=>{
 Cypress.Commands.add("viewDevAccountingJournal",(dateToEnter)=>{
   viewDevAccountingJournal(dateToEnter);
   })
+
+import{createBankAccount1,createBankAccount2,createBankAccount3,createBankAccount4,createBankAccount5,createBankAccount6,createBankAccount7,createBankAccount8}from "../e2e/MGM/bank_helper";
+Cypress.Commands.add("createBankAccount1", (accountName,bankAccountNumber,bankShortName) => {
+  createBankAccount1(accountName,bankAccountNumber,bankShortName);
+})
+
+Cypress.Commands.add("createBankAccount2", (accountName,bankAccountNumber,bankShortName) => {
+  createBankAccount2(accountName,bankAccountNumber,bankShortName);
+})
+
+Cypress.Commands.add("createBankAccount3", (accountName,bankAccountNumber,bankShortName) => {
+  createBankAccount3(accountName,bankAccountNumber,bankShortName);
+})
+
+Cypress.Commands.add("createBankAccount4", (accountName,bankAccountNumber,bankShortName) => {
+  createBankAccount4(accountName,bankAccountNumber,bankShortName);
+})
+
+Cypress.Commands.add("createBankAccount5", (accountName,bankAccountNumber,bankShortName) => {
+  createBankAccount5(accountName,bankAccountNumber,bankShortName);
+})
+
+Cypress.Commands.add("createBankAccount6", (accountName,bankAccountNumber,bankShortName) => {
+  createBankAccount6(accountName,bankAccountNumber,bankShortName);
+})
+
+Cypress.Commands.add("createBankAccount7", (accountName,bankAccountNumber,bankShortName) => {
+  createBankAccount7(accountName,bankAccountNumber,bankShortName);
+})
+
+Cypress.Commands.add("createBankAccount8", (accountName,bankAccountNumber,bankShortName) => {
+  createBankAccount8(accountName,bankAccountNumber,bankShortName);
+})

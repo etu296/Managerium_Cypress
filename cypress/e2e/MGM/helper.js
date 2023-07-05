@@ -19,49 +19,7 @@
         // .type("{enter}",{force: true});
         cy.wait(2000);
   };
-  //create bank account
-  export const createBankAccount = (accountName,bankAccountNumber,bankShortName) => {
-    const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
-    Cypress.on("uncaught:exception", (err) => {
-      /* returning false here prevents Cypress from failing the test */
-      if (resizeObserverLoopErrRe.test(err.message)) {
-        return false;
-      }
-    });
-
-    cy.visit("https://dev-mgm.ibos.io/accounts/bankAccount");
-    cy.get(".btn").eq(2).click({force:true});
-    cy.wait(1000);
-    cy.get(".form-control").eq(0).click({force:true}).type(accountName);
-    cy.get("#bankName > div")
-    .click({ force: true })
-    .get("#react-select-mgm-option-1")
-    .type("{enter}",{force: true});
-    cy.wait(2000);
-
-    cy.get("#branchName > div")
-    .click({ force: true })
-    .get("#react-select-mgm-option-12")
-    .type("{enter}",{force: true});
-    cy.wait(2000);
-
-    cy.get("#bankAccountType > div")
-    .click({ force: true })
-    .get("#react-select-mgm-option-5")
-    .type("{enter}",{force: true});
-    cy.wait(2000);
-
-    cy.get(".form-control").eq(1).click({force:true}).type(bankAccountNumber); 
-    cy.wait(1000);
-    cy.get(".form-control").eq(2).click({force:true}).type(bankShortName);
-    cy.wait(1000);
-    cy.get("form").submit();
-    cy.wait(2000);
-    cy.get(".newBtnBackground").eq(0).click({force:true});
-    cy.wait(2000);
-    cy.get(".MuiButton-root").eq(0).click({force:true});
-
-  };
+ 
 //create direct purchase receive
   export const createPurchaseReceive = (quantity,rate) => {
     const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
