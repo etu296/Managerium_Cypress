@@ -143,7 +143,7 @@ export const AccountUI = () => {
     //Project
     cy.visit("https://mgm.ibos.io/accounts/Project");
     cy.wait(1000);
-    cy.get(".btn").eq(1).click({force:true});
+    cy.get(".btn").eq(2).click({force:true});
     cy.wait(1000);
     //financial Report
     cy.visit("https://mgm.ibos.io/accounts/financialReport");
@@ -159,7 +159,7 @@ export const AccountUI = () => {
     //cheque Setup
     cy.visit("https://mgm.ibos.io/accounts/chequeSetup");
     cy.wait(1000);
-    cy.get(".MuiButtonBase-root").eq(1).click({force:true});
+    cy.get(".btn").eq(2).click({force:true});
     cy.wait(1000);
      
   };
