@@ -162,3 +162,14 @@ Cypress.Commands.add("createBankAccount7", (accountName,bankAccountNumber,bankSh
 Cypress.Commands.add("createBankAccount8", (accountName,bankAccountNumber,bankShortName) => {
   createBankAccount8(accountName,bankAccountNumber,bankShortName);
 })
+//mgm UI Commands
+import{PurchaseUI,SalesUI,AccountUI}from "../e2e/MGM/Mgm_UI_Helper";
+Cypress.Commands.add("PurchaseUI",()=>{
+  PurchaseUI();
+})
+Cypress.Commands.add("SalesUI",()=>{
+  SalesUI();
+})
+Cypress.Commands.add("AccountUI",()=>{
+  AccountUI();
+})
