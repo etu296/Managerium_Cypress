@@ -163,3 +163,81 @@ export const AccountUI = () => {
     cy.wait(1000);
      
   };
+
+  //Inventory
+export const InventoryUI = () => {
+  const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+  Cypress.on("uncaught:exception", (err) => {
+    /* returning false here prevents Cypress from failing the test */
+    if (resizeObserverLoopErrRe.test(err.message)) {
+      return false;
+    }
+  });
+   cy.viewport(1920, 1080);
+   //Inventory Request
+   cy.visit("https://mgm.ibos.io/inventory/request");
+   cy.wait(1000);
+   cy.get(".MuiButtonBase-root").eq(1).click({force:true});
+   cy.wait(1000);
+   cy.get(".MuiButtonBase-root").eq(2).click({force:true});
+   cy.wait(1000);
+   cy.get(".btn").eq(2).click({force:true});
+   cy.wait(1000);
+   //Transfer
+   cy.visit("https://mgm.ibos.io/inventory/transfer");
+   cy.wait(1000);
+   cy.get(".MuiButtonBase-root").eq(2).click({force:true});
+   cy.wait(1000);
+   cy.get(".MuiButtonBase-root").eq(1).click({force:true});
+   cy.wait(1000);
+   cy.get(".MuiButtonBase-root").eq(0).click({force:true});
+   cy.wait(1000);
+   //Item Conversion
+   cy.visit("https://mgm.ibos.io/inventory/Item-convertion");
+   cy.wait(1000);
+   cy.get(".btn").eq(2).click({force:true});
+   cy.wait(1000);
+   //Item Requisition
+   cy.visit("https://mgm.ibos.io/inventory/InvRequisition");
+   cy.wait(1000);
+   cy.get(".btn").eq(2).click({force:true});
+   cy.wait(1000);
+   //Item Issue
+   cy.visit("https://mgm.ibos.io/inventory/InvRequisitionIssue");
+   cy.wait(1000);
+   cy.get(".MuiButtonBase-root").eq(2).click({force:true});
+   cy.wait(1000);
+   //stock adjustment
+   cy.visit("https://mgm.ibos.io/inventory/stock-adjustment");
+   cy.wait(1000);
+   cy.get(".MuiButtonBase-root").eq(0).click({force:true});
+   cy.wait(1000);
+   //stock adjustment
+   cy.get(".MuiButtonBase-root").eq(1).click({force:true});
+   cy.wait(1000);
+   //stock dispose
+  //  cy.get(".MuiButtonBase-root").eq(2).click({force:true});
+  //  cy.wait(1000);
+   //Inventory Report
+   cy.visit("https://mgm.ibos.io/inventory/inventoryReport");
+   cy.wait(1000);
+  //Stock Report
+    cy.visit("https://mgm.ibos.io/inventory/stock");
+    cy.wait(1000);
+    // cy.get(".MuiButtonBase-root").eq(1).click({force:true});
+    // cy.wait(1000);
+    // cy.get(".MuiButtonBase-root").eq(2).click({force:true});
+    // cy.wait(1000);
+    // cy.get(".MuiButtonBase-root").eq(3).click({force:true});
+    // cy.wait(1000);
+  //audit Setup
+    cy.visit("https://mgm.ibos.io/inventory/auditSetup");
+    cy.wait(1000);
+    cy.get(".MuiButtonBase-root").eq(0).click({force:true});
+    cy.wait(1000);
+    //Stock Audit
+    cy.visit("https://mgm.ibos.io/inventory/audit");
+    cy.wait(1000);
+    cy.get(".MuiButtonBase-root").eq(0).click({force:true});
+    cy.wait(1000);  
+};
