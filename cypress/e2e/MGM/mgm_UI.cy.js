@@ -8,7 +8,9 @@ describe("MGM UI all routes,links Test Cases ",()=>{
         // cy.wait(2000);
         // cy.AccountUI();
         // cy.wait(2000);
-        cy.InventoryUI();
+        // cy.InventoryUI();
+        cy.HrUI();
+
 
         });
 

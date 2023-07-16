@@ -241,3 +241,80 @@ export const InventoryUI = () => {
     cy.get(".MuiButtonBase-root").eq(0).click({force:true});
     cy.wait(1000);  
 };
+
+  //Inventory
+  export const HrUI = () => {
+    const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+    Cypress.on("uncaught:exception", (err) => {
+      /* returning false here prevents Cypress from failing the test */
+      if (resizeObserverLoopErrRe.test(err.message)) {
+        return false;
+      }
+    });
+     cy.viewport(1920, 1080);
+     //Daily Attendance
+     cy.visit("https://mgm.ibos.io/hrAdmin/attendance");
+     cy.wait(1000);
+     //Leave & Movement
+     cy.visit("https://mgm.ibos.io/hrAdmin/leave&Movement");
+     cy.wait(1000);
+     cy.get(".PrivateSwitchBase-input").eq(1).click({force: true });
+     cy.wait(1000);
+     //Config/Policies
+     cy.visit("https://mgm.ibos.io/hrAdmin/config");
+     cy.wait(1000);
+     cy.get(".btn").eq(2).click({force:true});
+     cy.wait(1000);
+     cy.get('.MuiSvgIcon-root').eq(23).click({force:true});
+     cy.wait(1000);  
+     //Calander
+     cy.get(".MuiButtonBase-root").eq(1).click({force:true});
+     cy.wait(1000);  
+     cy.get(".btn").eq(2).click({force:true});
+     cy.wait(1000);
+     cy.get('.MuiSvgIcon-root').eq(23).click({force:true});
+     cy.wait(1000);  
+     //offday
+     cy.get(".MuiButtonBase-root").eq(2).click({force:true});
+     cy.wait(1000);  
+     cy.get(".btn").eq(2).click({force:true});
+     cy.wait(1000);
+     cy.get('.MuiSvgIcon-root').eq(23).click({force:true});
+     cy.wait(1000);  
+    //Leave
+    cy.get(".MuiButtonBase-root").eq(3).click({force:true});
+    cy.wait(1000);  
+    cy.get(".btn").eq(2).click({force:true});
+    cy.wait(1000);
+    cy.get('.MuiSvgIcon-root').eq(23).click({force:true});
+    cy.wait(1000);  
+    //Roster
+    cy.get(".MuiButtonBase-root").eq(4).click({force:true});
+    cy.wait(1000);  
+    cy.get(".btn").eq(2).click({force:true});
+    cy.wait(1000);
+    cy.get('.MuiSvgIcon-root').eq(23).click({force:true});
+    cy.wait(1000);  
+    //salary
+    cy.get(".MuiButtonBase-root").eq(5).click({force:true});
+    cy.wait(1000);  
+    cy.get(".btn").eq(2).click({force:true});
+    cy.wait(1000);
+    cy.get('.MuiSvgIcon-root').eq(23).click({force:true});
+    cy.wait(1000);  
+    //overtime
+    cy.get(".MuiButtonBase-root").eq(6).click({force:true});
+    cy.wait(1000);  
+    cy.get(".btn").eq(2).click({force:true});
+    cy.wait(1000);
+    cy.get('.MuiSvgIcon-root').eq(23).click({force:true});
+    cy.wait(1000);  
+    //others
+    cy.get(".MuiButtonBase-root").eq(7).click({force:true});
+    cy.wait(1000);  
+   
+   
+
+
+      
+  };
