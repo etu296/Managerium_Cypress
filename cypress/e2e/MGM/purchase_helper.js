@@ -8,15 +8,15 @@ export const devlogin = (userId, password) => {
       }
     });
     cy.viewport(1920, 1080);
-    cy.visit("https://dev-mgm.ibos.io/");
+    cy.visit("https://devmgm.ibos.io/");
         cy.get("#loginMobileNo").eq(0).click({force:true}).type(userId);
         cy.get("#loginPassword").eq(0).click({force:true}).type(password);
         cy.get("form").submit();
         cy.wait(1000);
-        // cy.get("#branchList > div")
-        // .click({ force: true })
-        // .get("#react-select-mgm-option-0")
-        // .type("{enter}",{force: true});
+        cy.get("#branchList > div")
+        .click({ force: true })
+        .get("#react-select-mgm-option-2")
+        .type("{enter}",{force: true});
         cy.wait(2000);
   };
 
@@ -107,6 +107,89 @@ export const DirectSupplierPaymentByBank = (quantity,rate,discount,VAT,AIT) => {
     cy.get('.MuiButtonBase-root ').eq(4).click({force:true});
     cy.wait(2000);
   };
+  // Purchase order with Vat %
+  export const createPurchaseOrder = (quantity,rate,VAT,quantity1,rate1,VAT1) => {
+    const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+    Cypress.on("uncaught:exception", (err) => {
+      /* returning false here prevents Cypress from failing the test */
+      if (resizeObserverLoopErrRe.test(err.message)) {
+        return false;
+      }
+    });     
+    cy.visit("https://devmgm.ibos.io/purchase/purchaseOrder");
+    cy.wait(1000);
+    cy.get('.MuiButtonBase-root ').eq(1).click({force:true});
+    cy.wait(1000);
+    cy.get('.MuiButtonBase-root ').eq(4).click({force:true});
+    cy.wait(1000);
+    //select supplier
+    cy.get("#supplier > div")
+    .click({ force: true })
+    .get("#react-select-mgm-option-4")
+    .type("{enter}",{force: true});
+    cy.wait(2000);
+    //add item
+    cy.get("#item > div")
+    .click({ force: true })
+    .get("#react-select-mgm-option-0")
+    .type("{enter}",{force: true});
+    cy.wait(2000);
+    cy.get(".form-control").eq(4).click({force:true}).type(quantity);
+    cy.wait(1000);
+    cy.get(".form-control").eq(5).click({force:true}).type(rate);
+    cy.wait(2000);
+    //vat in %
+    // cy.get(".form-control").eq(7).click({force:true}).type(VAT);
+    // cy.wait(2000);
+    //vat in amount
+    cy.get(".PrivateSwitchBase-input").eq(4).check({force:true});
+    cy.wait(1000);
+    cy.get(".form-control").eq(7).click({force:true}).type(VAT);
+    cy.wait(2000);
+
+    cy.get(".btn").eq(5).click({ force: true });
+    //add 2nd
+    cy.get("#item > div")
+    .click({ force: true })
+    .get("#react-select-mgm-option-2")
+    .type("{enter}",{force: true});
+    cy.wait(2000);
+    cy.get(".form-control").eq(4).click({force:true}).type(quantity1);
+    cy.wait(1000);
+    cy.get(".form-control").eq(5).click({force:true}).type(rate1);
+    cy.wait(2000);
+    //vat in %
+    cy.get(".form-control").eq(7).click({force:true}).type(VAT1);
+    cy.wait(2000);
+    cy.get(".btn").eq(5).click({ force: true });
+    cy.wait(2000);
+    // cy.get("form").submit();
+   
+  };
+
+  //approve purchase order
+ export const approvePurchaseOrder = () => {
+    const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+    Cypress.on("uncaught:exception", (err) => {
+      /* returning false here prevents Cypress from failing the test */
+      if (resizeObserverLoopErrRe.test(err.message)) {
+        return false;
+      }
+    });
+    cy.visit("https://devmgm.ibos.io/commonapproval");
+    cy.wait(1000);
+    cy.get('.rowItem').eq(0).click({force:true});
+    cy.wait(2000);
+    cy.get('[type="checkbox"]').eq(1).check({ force: true });
+    cy.wait(2000);
+    cy.get('.btn').eq(3).click({force:true});
+    cy.wait(2000);
+    cy.get('.MuiButtonBase-root').eq(4).click({force:true});
+    cy.wait(2000);
+  };
+
+  // Full Recevie item from created purchase order
+  
 
   //view accounting journal in dev
   export const viewDevAccountingJournal = (dateToEnter) => {

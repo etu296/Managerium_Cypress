@@ -32,6 +32,7 @@ Cypress.Commands.add("login", (userId, password) => {
 Cypress.Commands.add("createPurchaseReceive", (quantity,rate) => {
   createPurchaseReceive(quantity,rate);
 })
+
 Cypress.Commands.add("createFieldCollection", (amount) => {
   createFieldCollection(amount);
 })
@@ -110,11 +111,19 @@ Cypress.Commands.add("PartialdeliverSalesOrder",(deliverQuantity1,deliverQuantit
   PartialdeliverSalesOrder(deliverQuantity1,deliverQuantity2,deliverQuantity3);
 })
 
-import{devlogin,DirectSupplierPaymentByCash,DirectSupplierPaymentByBank,viewDevAccountingJournal}from "../e2e/MGM/purchase_helper";
+import{approvePurchaseOrder,createPurchaseOrder,devlogin,DirectSupplierPaymentByCash,DirectSupplierPaymentByBank,viewDevAccountingJournal}from "../e2e/MGM/purchase_helper";
 //dev login
 
 Cypress.Commands.add("devlogin", (userId, password) => {
   devlogin(userId, password);
+})
+//purchase order
+Cypress.Commands.add("createPurchaseOrder", (quantity,rate,VAT,quantity1,rate1,VAT1) => {
+  createPurchaseOrder(quantity,rate,VAT,quantity1,rate1,VAT1);
+})
+//approve Purchase Order
+Cypress.Commands.add("approvePurchaseOrder", () => {
+  approvePurchaseOrder();
 })
 
 //direct purchase payment by cash
