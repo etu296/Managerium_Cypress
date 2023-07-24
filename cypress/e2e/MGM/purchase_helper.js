@@ -8,7 +8,7 @@ export const devlogin = (userId, password) => {
       }
     });
     cy.viewport(1920, 1080);
-    cy.visit("https://devmgm.ibos.io/");
+    cy.visit("https://mgm.ibos.io/");
         cy.get("#loginMobileNo").eq(0).click({force:true}).type(userId);
         cy.get("#loginPassword").eq(0).click({force:true}).type(password);
         cy.get("form").submit();
@@ -23,7 +23,7 @@ export const devlogin = (userId, password) => {
 
 
 //Direct Purchase Payment by cash
-export const DirectSupplierPaymentByCash = (quantity,rate,discount,VAT,AIT) => {
+export const DirectSupplierPaymentByCash = () => {
     const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
     Cypress.on("uncaught:exception", (err) => {
       /* returning false here prevents Cypress from failing the test */
@@ -31,7 +31,7 @@ export const DirectSupplierPaymentByCash = (quantity,rate,discount,VAT,AIT) => {
         return false;
       }
     });
-    cy.visit("https://dev-mgm.ibos.io/purchase/invoice");
+    cy.visit("https://mgm.ibos.io/purchase/invoice");
     cy.wait(1000);
     // click payment by invoice($) icon
     cy.get(".MuiSvgIcon-root").eq(27).click({force:true});
@@ -116,7 +116,7 @@ export const DirectSupplierPaymentByBank = (quantity,rate,discount,VAT,AIT) => {
         return false;
       }
     });     
-    cy.visit("https://devmgm.ibos.io/purchase/purchaseOrder");
+    cy.visit("https://mgm.ibos.io/purchase/purchaseOrder");
     cy.wait(1000);
     cy.get('.MuiButtonBase-root ').eq(1).click({force:true});
     cy.wait(1000);
@@ -163,8 +163,8 @@ export const DirectSupplierPaymentByBank = (quantity,rate,discount,VAT,AIT) => {
     cy.wait(2000);
     cy.get(".btn").eq(5).click({ force: true });
     cy.wait(2000);
-    // cy.get("form").submit();
-   
+    cy.get("form").submit();
+    cy.wait(2000);
   };
 
   //approve purchase order
@@ -176,7 +176,7 @@ export const DirectSupplierPaymentByBank = (quantity,rate,discount,VAT,AIT) => {
         return false;
       }
     });
-    cy.visit("https://devmgm.ibos.io/commonapproval");
+    cy.visit("https://mgm.ibos.io/commonapproval");
     cy.wait(1000);
     cy.get('.rowItem').eq(0).click({force:true});
     cy.wait(2000);
@@ -189,7 +189,56 @@ export const DirectSupplierPaymentByBank = (quantity,rate,discount,VAT,AIT) => {
   };
 
   // Full Recevie item from created purchase order
-  
+  export const receivePurchaseOrder = (quantity,rate,VAT,quantity1,rate1,VAT1) => {
+    const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+    Cypress.on("uncaught:exception", (err) => {
+      /* returning false here prevents Cypress from failing the test */
+      if (resizeObserverLoopErrRe.test(err.message)) {
+        return false;
+      }
+    });     
+    cy.visit("https://mgm.ibos.io/purchase/goodsReceive");
+    cy.wait(1000);
+    cy.get('.MuiSvgIcon-root ').eq(27).click({force:true});
+    cy.wait(1000);
+    cy.get(".PrivateSwitchBase-input").eq(0).check({force:true});
+    cy.wait(1000);
+    //add batch
+    cy.get('.MuiSvgIcon-root ').eq(31).click({force:true});
+    cy.wait(1000);
+    cy.get('.form-control').eq(6).click({ force: true }).type('Batch-1', {force: true});
+    cy.wait(2000);
+    cy.get('.form-control').eq(7).click({ force: true }).type('100',{force:true});
+    cy.wait(2000);
+    cy.get('.btn').eq(3).click({force:true});
+    cy.wait(2000);
+    cy.get('.MuiButtonBase-root').eq(2).click({force:true});
+    cy.wait(2000);
+    //submit
+    cy.get('.btn').eq(2).click({force:true});
+    cy.wait(2000);
+  };
+
+  //view received purchase order
+  export const viewReceivePurchaseOrder = (quantity,rate,VAT,quantity1,rate1,VAT1) => {
+    const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+    Cypress.on("uncaught:exception", (err) => {
+      /* returning false here prevents Cypress from failing the test */
+      if (resizeObserverLoopErrRe.test(err.message)) {
+        return false;
+      }
+    }); 
+    cy.visit("https://mgm.ibos.io/purchase/goodsReceive");
+    cy.wait(1000);    
+    cy.get('.MuiButtonBase-root ').eq(3).click({force:true});
+    cy.wait(1000);
+    //click  on view icon
+    cy.get('.MuiSvgIcon-root ').eq(28).click({force:true});
+    cy.wait(1000);
+  };
+
+  // purchase payment against the GRN & supplier
+ 
 
   //view accounting journal in dev
   export const viewDevAccountingJournal = (dateToEnter) => {
