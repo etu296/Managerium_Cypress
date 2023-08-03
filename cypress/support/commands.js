@@ -195,3 +195,10 @@ Cypress.Commands.add("InventoryUI",()=>{
 Cypress.Commands.add("HrUI",()=>{
   HrUI();
 })
+
+//account Expence/Advance
+import{createAdvance}from "../e2e/MGM/account_helper";
+
+Cypress.Commands.add("createAdvance",(amount)=>{
+ createAdvance(amount);
+})
