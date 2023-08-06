@@ -197,8 +197,14 @@ Cypress.Commands.add("HrUI",()=>{
 })
 
 //account Expence/Advance
-import{createAdvance}from "../e2e/MGM/account_helper";
+import{paymentAdvance,approveAdvance,createAdvance}from "../e2e/MGM/account_helper";
 
 Cypress.Commands.add("createAdvance",(amount)=>{
  createAdvance(amount);
 })
+Cypress.Commands.add("approveAdvance",()=>{
+  approveAdvance();
+ })
+ Cypress.Commands.add("paymentAdvance",()=>{
+  paymentAdvance();
+ })

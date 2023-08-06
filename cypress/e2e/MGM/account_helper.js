@@ -21,7 +21,6 @@
   };
 
   //create Advance
-    //login
     export const createAdvance = (amount) => {
         const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
         Cypress.on("uncaught:exception", (err) => {
@@ -50,7 +49,7 @@
     //   cy.wait(1000);
       cy.get('.form-control').eq(2).click({force:true}).type(amount);
       cy.wait(1000);
-    //   cy.get("form").submit();
+      cy.get("form").submit();
       cy.wait(2000);
 
       //view created advance details
@@ -60,3 +59,62 @@
 
 
       };
+
+  //Expence/Advance approval
+  export const approveAdvance = () => {
+    const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+    Cypress.on("uncaught:exception", (err) => {
+      /* returning false here prevents Cypress from failing the test */
+      if (resizeObserverLoopErrRe.test(err.message)) {
+        return false;
+      }
+    });
+    cy.visit("https://mgm.ibos.io/commonapproval");
+    cy.wait(1000);
+    cy.get('.rowItem').eq(8).click({force:true});
+    cy.wait(2000);
+    cy.get('.MuiButtonBase-root').eq(2).click({force:true});
+    cy.wait(2000);
+    cy.get('[type="checkbox"]').eq(1).check({ force: true });
+    cy.wait(2000);
+    cy.get('.btn').eq(3).click({force:true});
+    cy.wait(2000);
+    cy.get('.MuiButtonBase-root').eq(6).click({force:true});
+    cy.wait(2000);
+  };
+
+    //payment Advance 
+    export const paymentAdvance = () => {
+      const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+      Cypress.on("uncaught:exception", (err) => {
+        /* returning false here prevents Cypress from failing the test */
+        if (resizeObserverLoopErrRe.test(err.message)) {
+          return false;
+        }
+      });
+      cy.visit("https://mgm.ibos.io/accounts/expenseOrAdvance");
+      cy.wait(1000);
+      cy.get('.MuiButtonBase-root ').eq(3).click({force:true});
+      cy.wait(1000);
+      cy.get('.MuiSvgIcon-root').eq(29).click({force:true});
+      cy.wait(1000);
+      //select office
+      cy.get("#office > div")
+      .click({ force: true })
+      .get("#react-select-mgm-option-0")
+      .type("{enter}",{force: true});
+      cy.wait(1000);
+       //select cash type
+      cy.get("#cash > div")
+      .click({ force: true })
+      .get("#react-select-mgm-option-0")
+      .type("{enter}",{force: true});
+      cy.wait(1000);
+      cy.get("form").submit();
+      cy.wait(2000);
+      cy.get('.MuiButtonBase-root ').eq(4).click({force:true});
+      cy.wait(1000);
+      cy.get('.MuiTableCell-root').eq(11).click({force:true});
+      cy.wait(1000);
+
+    };
