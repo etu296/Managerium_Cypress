@@ -23,7 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import {viewAccountingJournal,ApproveFullReturn,viewReturndetails,approveSalesOrder,returndeliverSalesOrder,deliverSalesOrder,approveSalesQuotation,orderFromQuotation,editsalesQuotation,createSalesQuotationLine,createSalesQuotationGross,collectionReceive,createFieldCollection,createPurchaseReceive,createBankAccount,login} from "../e2e/MGM/helper";
+import {viewAccountingJournal,ApproveFullReturn,viewReturndetails,approveSalesOrder,returndeliverSalesOrder,deliverSalesOrder,approveSalesQuotation,orderFromQuotation,editsalesQuotation,createSalesQuotationLine,createSalesQuotationGross,createPurchaseReceive,createBankAccount,login} from "../e2e/MGM/helper";
 
 Cypress.Commands.add("login", (userId, password) => {
   login(userId, password);
@@ -31,13 +31,6 @@ Cypress.Commands.add("login", (userId, password) => {
 
 Cypress.Commands.add("createPurchaseReceive", (quantity,rate) => {
   createPurchaseReceive(quantity,rate);
-})
-
-Cypress.Commands.add("createFieldCollection", (amount) => {
-  createFieldCollection(amount);
-})
-Cypress.Commands.add("collectionReceive", () => {
-  collectionReceive();
 })
 Cypress.Commands.add("createSalesQuotationGross", (quantity,rate,grossDiscount) => {
   createSalesQuotationGross (quantity,rate,grossDiscount);
@@ -89,7 +82,7 @@ Cypress.Commands.add("ApproveItemRequest",()=>{
 })
 
  // sales direct delivery
-import{PartialdeliverSalesOrder,createSalesOrderExclusive,createSalesOrderInclusive,createDirectSalesInclusive,createDirectSalesExclusive}from "../e2e/MGM/sales_helper";
+import{PartialdeliverSalesOrder,createSalesOrderExclusive,createSalesOrderInclusive,createDirectSalesInclusive,createDirectSalesExclusive,collectionReceive,createFieldCollection}from "../e2e/MGM/sales_helper";
 
 Cypress.Commands.add("createDirectSalesExclusive",(quantity,rate,discount,VAT,AIT)=>{
   createDirectSalesExclusive(quantity,rate,discount,VAT,AIT);
@@ -109,6 +102,13 @@ Cypress.Commands.add("createSalesOrderInclusive",(quantity,rate,discount,VAT,AIT
 //partial sales delivery
 Cypress.Commands.add("PartialdeliverSalesOrder",(deliverQuantity1,deliverQuantity2,deliverQuantity3)=>{
   PartialdeliverSalesOrder(deliverQuantity1,deliverQuantity2,deliverQuantity3);
+})
+
+Cypress.Commands.add("createFieldCollection", (amount) => {
+  createFieldCollection(amount);
+})
+Cypress.Commands.add("collectionReceive", () => {
+  collectionReceive();
 })
 
 import{viewReceivePurchaseOrder,receivePurchaseOrder,approvePurchaseOrder,createPurchaseOrder,devlogin,DirectSupplierPaymentByCash,DirectSupplierPaymentByBank,viewDevAccountingJournal}from "../e2e/MGM/purchase_helper";

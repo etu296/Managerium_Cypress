@@ -10,4 +10,4 @@
             cy.login("01928374657","123456");
             cy.createDirectSalesInclusive("1","200","10","10","5");
         });
-     });
+        });

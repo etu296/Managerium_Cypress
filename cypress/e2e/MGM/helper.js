@@ -50,57 +50,7 @@
         cy.wait(2000);
         cy.get("form").submit();
   };
-// Create field collection
-  export const createFieldCollection = (amount) => {
-    const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
-    Cypress.on("uncaught:exception", (err) => {
-      /* returning false here prevents Cypress from failing the test */
-      if (resizeObserverLoopErrRe.test(err.message)) {
-        return false;
-      }
-    });
-    cy.visit("https://dev-mgm.ibos.io/sales/fieldCollection");
-    cy.wait(1000);
-       cy.get(".btn").eq(2).click({force:true});
-       cy.wait(1000);
-       cy.get("#office > div")
-       .click({ force: true })
-       .get("#react-select-mgm-option-0")
-       .type("{enter}",{force: true});
-       cy.wait(2000);
-       cy.get("#customer > div")
-       .click({ force: true })
-       .get("#react-select-mgm-option-5")
-       .type("{enter}",{force: true});
-       cy.wait(2000);
-       cy.get("#collectionType > div")
-       .click({ force: true })
-       .get("#react-select-mgm-option-0")
-       .type("{enter}",{force: true});
-       cy.wait(2000);
-       cy.get(".form-control").eq(3).click({force:true}).type(amount);
-       cy.wait(1000);
-       cy.get('.btn').eq(3).click({force:true});
-       cy.wait(1000);
-       cy.get("form").submit();
-  };
- //field Collection deposite
-  export const collectionReceive = () => {
-    const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
-    Cypress.on("uncaught:exception", (err) => {
-      /* returning false here prevents Cypress from failing the test */
-      if (resizeObserverLoopErrRe.test(err.message)) {
-        return false;
-      }
-    });
-    cy.visit("https://dev-mgm.ibos.io/sales/fieldCollection");
-    cy.wait(1000);
-    cy.get('[type="checkbox"]').eq(1).check({ force: true });
-    cy.wait(2000);
-    cy.get('.btn').eq(4).click({force:true});
-    cy.wait(2000);
-    
-  };
+
   //sales quotation gross discount
   export const createSalesQuotationGross = (quantity,rate,grossDiscount) => {
     const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
