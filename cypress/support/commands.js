@@ -208,3 +208,15 @@ Cypress.Commands.add("approveAdvance",()=>{
  Cypress.Commands.add("paymentAdvance",()=>{
   paymentAdvance();
  })
+
+ //Cost center
+import{editCostCenter,createCostCenter}from "../e2e/MGM/cost_center_helper";
+
+
+Cypress.Commands.add("createCostCenter",(CostCenterName)=>{
+  createCostCenter(CostCenterName);
+ })
+ Cypress.Commands.add("editCostCenter",(CostCenterName)=>{
+  editCostCenter(CostCenterName);
+ })
+
