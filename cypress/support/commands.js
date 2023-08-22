@@ -220,3 +220,15 @@ Cypress.Commands.add("createCostCenter",(CostCenterName)=>{
   editCostCenter(CostCenterName);
  })
 
+//Purchase Cost Estimation
+import{editPurchaseCostEstimation,createPurchaseCostEstimation}from "../e2e/MGM/purchase_cost_estimation_helper";
+
+
+Cypress.Commands.add("createPurchaseCostEstimation",(Exchange_Rate,Frieght_Rate,CF_Rate,Margin_Rate,CD_Rate,Quantity,PFI_Price,custtomer_price)=>{
+  createPurchaseCostEstimation(Exchange_Rate,Frieght_Rate,CF_Rate,Margin_Rate,CD_Rate,Quantity,PFI_Price,custtomer_price);
+ })
+ 
+ Cypress.Commands.add("editPurchaseCostEstimation",(Frieght_Rate,CF_Rate,Margin_Rate,CD_Rate,Quantity,PFI_Price,custtomer_price)=>{
+  editPurchaseCostEstimation(Frieght_Rate,CF_Rate,Margin_Rate,CD_Rate,Quantity,PFI_Price,custtomer_price);
+ })
+
