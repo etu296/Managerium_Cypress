@@ -112,19 +112,19 @@
         cy.get('.MuiSvgIcon-root ').eq(30).click({force:true});
 
          //add item
-         for(let i=26; i<50; i++)
-         {
-             const selector = `#react-select-mgm-option-${i}`;
-             cy.log(`Current selector: ${selector}`);
+        //  for(let i=26; i<50; i++)
+        //  {
+        //      const selector = `#react-select-mgm-option-${i}`;
+        //      cy.log(`Current selector: ${selector}`);
            
-             cy.get("#item > div")
-               .click({ force: true })
-               .get(selector)
-               .type("{enter}", { force: true });
-             cy.wait(1000);
-             cy.get('.btn').eq(3).click({force:true});
-             cy.wait(1000);
-         }
+        //      cy.get("#item > div")
+        //        .click({ force: true })
+        //        .get(selector)
+        //        .type("{enter}", { force: true });
+        //      cy.wait(1000);
+        //      cy.get('.btn').eq(3).click({force:true});
+        //      cy.wait(1000);
+        //  }
          
          cy.get('.form-control').eq(3).click({force:true}).type(Frieght_Rate);
          cy.wait(1000);
@@ -137,18 +137,18 @@
 
          // add quantity & PFI Price
 
-        //  cy.get('.form-control').eq(7).click({force:true}).type(Quantity);
-        //  cy.wait(1000);
-        //  cy.get('.form-control').eq(8).click({force:true}).type(PFI_Price);
-        //  cy.wait(1000);
-        //  cy.get('.form-control').eq(13).click({force:true}).type(custtomer_price);
-        //  cy.wait(1000);
-        //  cy.get('.form-control').eq(14).click({force:true}).type(Quantity);
-        //  cy.wait(1000);
-        //  cy.get('.form-control').eq(15).click({force:true}).type(PFI_Price);
-        //  cy.wait(1000);
-        //  cy.get('.form-control').eq(20).click({force:true}).type(custtomer_price);
-        //  cy.wait(1000);
+         cy.get('.form-control').eq(7).click({force:true}).type(Quantity);
+         cy.wait(1000);
+         cy.get('.form-control').eq(8).click({force:true}).type(PFI_Price);
+         cy.wait(1000);
+         cy.get('.form-control').eq(13).click({force:true}).type(custtomer_price);
+         cy.wait(1000);
+         cy.get('.form-control').eq(14).click({force:true}).type(Quantity);
+         cy.wait(1000);
+         cy.get('.form-control').eq(15).click({force:true}).type(PFI_Price);
+         cy.wait(1000);
+         cy.get('.form-control').eq(20).click({force:true}).type(custtomer_price);
+         cy.wait(1000);
         // submit 
          cy.get("form").submit();
         cy.wait(2000);

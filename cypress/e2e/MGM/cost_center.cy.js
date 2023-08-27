@@ -6,6 +6,6 @@
         // cy.createCostCenter("Era'cost Center");
         // cy.createCostCenter("Era'cost Center 1");
         // cy.createCostCenter("Era'cost Center 2");
-        cy.editCostCenter("Etu cost center");
+        cy.editCostCenter("New Etu cost center");
     });
 });

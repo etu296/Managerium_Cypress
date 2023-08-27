@@ -64,7 +64,8 @@
      .get("#react-select-mgm-option-1")
      .type("{enter}",{force: true});
      cy.wait(1000);
-     cy.get('.form-control').eq(1).click({force:true}).type(CostCenterName);
+     //clear the existing text & type new text for edit
+     cy.get('.form-control').eq(1).click({force:true}).clear().type(CostCenterName);
      cy.wait(1000);
      cy.get("form").submit();
      cy.wait(1000); 
