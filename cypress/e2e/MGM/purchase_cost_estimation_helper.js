@@ -13,10 +13,10 @@
         cy.get("#loginPassword").eq(0).click({force:true}).type(password);
         cy.get("form").submit();
         cy.wait(1000);
-        // cy.get("#branchList > div")
-        // .click({ force: true })
-        // .get("#react-select-mgm-option-0")
-        // .type("{enter}",{force: true});
+        cy.get("#branchList > div")
+        .click({ force: true })
+        .get("#react-select-mgm-option-2")
+        .type("{enter}",{force: true});
         cy.wait(2000);
   };
     //create Purchase Cost Estimation
@@ -40,11 +40,11 @@
         .type("{enter}",{force: true});
         cy.wait(1000);
         //select supplier
-      //   cy.get("#categoryValues > div")
-      //  .click({ force: true })
-      //  .get("#react-select-mgm-option-0")
-      //  .type("{enter}",{force: true});
-      //   cy.wait(1000);
+        cy.get("#categoryValues > div")
+       .click({ force: true })
+       .get("#react-select-mgm-option-20")
+       .type("{enter}",{force: true});
+        cy.wait(1000);
         //add item
         for(let i=0; i<25; i++)
         {
