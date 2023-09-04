@@ -23,7 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import {viewAccountingJournal,ApproveFullReturn,viewReturndetails,approveSalesOrder,returndeliverSalesOrder,deliverSalesOrder,approveSalesQuotation,orderFromQuotation,editsalesQuotation,createSalesQuotationLine,createSalesQuotationGross,createPurchaseReceive,createBankAccount,login} from "../e2e/MGM/helper";
+import {viewAccountingJournal,ApproveFullReturn,viewReturndetails,approveSalesOrder,returndeliverSalesOrder,deliverSalesOrder,approveSalesQuotation,orderFromQuotation,editsalesQuotation,createSalesQuotationLine,createSalesQuotationGross,createPurchaseReceive,createBankAccount,login} from "../e2e/MGM/Sales/helper";
 
 Cypress.Commands.add("login", (userId, password) => {
   login(userId, password);
@@ -72,7 +72,7 @@ Cypress.Commands.add("viewAccountingJournal", (dateToEnter) => {
 //   iposlogin(userId, password);
 // })
 //ipos commands for test case
-import{ApproveItemRequest,createItemRequest }from "../e2e/MGM/item_request_helper";
+import{ApproveItemRequest,createItemRequest }from "../e2e/MGM/Inventory/item_request_helper";
 
 Cypress.Commands.add("createItemRequest",(RequestQuantity)=>{
   createItemRequest(RequestQuantity);
@@ -82,7 +82,7 @@ Cypress.Commands.add("ApproveItemRequest",()=>{
 })
 
  // sales direct delivery
-import{PartialdeliverSalesOrder,createSalesOrderExclusive,createSalesOrderInclusive,createDirectSalesInclusive,createDirectSalesExclusive,collectionReceive,createFieldCollection}from "../e2e/MGM/sales_helper";
+import{PartialdeliverSalesOrder,createSalesOrderExclusive,createSalesOrderInclusive,createDirectSalesInclusive,createDirectSalesExclusive,collectionReceive,createFieldCollection}from "../e2e/MGM/Sales/sales_helper";
 
 Cypress.Commands.add("createDirectSalesExclusive",(quantity,rate,discount,VAT,AIT)=>{
   createDirectSalesExclusive(quantity,rate,discount,VAT,AIT);
@@ -111,12 +111,13 @@ Cypress.Commands.add("collectionReceive", () => {
   collectionReceive();
 })
 
-import{viewReceivePurchaseOrder,receivePurchaseOrder,approvePurchaseOrder,createPurchaseOrder,devlogin,DirectSupplierPaymentByCash,DirectSupplierPaymentByBank,viewDevAccountingJournal}from "../e2e/MGM/purchase_helper";
-//dev login
+import{createForeignPurchaseOrder,viewReceivePurchaseOrder,receivePurchaseOrder,approvePurchaseOrder,createPurchaseOrder,DirectSupplierPaymentByCash,DirectSupplierPaymentByBank,viewDevAccountingJournal}from "../e2e/MGM/Purchase/purchase_helper";
 
-Cypress.Commands.add("devlogin", (userId, password) => {
-  devlogin(userId, password);
+//Foreign purchase order
+Cypress.Commands.add("createForeignPurchaseOrder", () => {
+  createForeignPurchaseOrder();
 })
+
 //purchase order
 Cypress.Commands.add("createPurchaseOrder", (quantity,rate,VAT,quantity1,rate1,VAT1) => {
   createPurchaseOrder(quantity,rate,VAT,quantity1,rate1,VAT1);
@@ -146,7 +147,7 @@ Cypress.Commands.add("viewDevAccountingJournal",(dateToEnter)=>{
   viewDevAccountingJournal(dateToEnter);
   })
 
-import{createBankAccount1,createBankAccount2,createBankAccount3,createBankAccount4,createBankAccount5,createBankAccount6,createBankAccount7,createBankAccount8}from "../e2e/MGM/bank_helper";
+import{createBankAccount1,createBankAccount2,createBankAccount3,createBankAccount4,createBankAccount5,createBankAccount6,createBankAccount7,createBankAccount8}from "../e2e/MGM/Account/bank_helper";
 Cypress.Commands.add("createBankAccount1", (accountName,bankAccountNumber,bankShortName) => {
   createBankAccount1(accountName,bankAccountNumber,bankShortName);
 })
@@ -197,7 +198,7 @@ Cypress.Commands.add("HrUI",()=>{
 })
 
 //account Expence/Advance
-import{paymentAdvance,approveAdvance,createAdvance}from "../e2e/MGM/account_helper";
+import{paymentAdvance,approveAdvance,createAdvance}from "../e2e/MGM/Account/account_helper";
 
 Cypress.Commands.add("createAdvance",(amount)=>{
  createAdvance(amount);
@@ -210,7 +211,7 @@ Cypress.Commands.add("approveAdvance",()=>{
  })
 
  //Cost center
-import{editCostCenter,createCostCenter}from "../e2e/MGM/cost_center_helper";
+import{editCostCenter,createCostCenter}from "../e2e/MGM/Account/cost_center_helper";
 
 
 Cypress.Commands.add("createCostCenter",(CostCenterName)=>{
@@ -221,7 +222,7 @@ Cypress.Commands.add("createCostCenter",(CostCenterName)=>{
  })
 
 //Purchase Cost Estimation
-import{editPurchaseCostEstimation,createPurchaseCostEstimation}from "../e2e/MGM/purchase_cost_estimation_helper";
+import{editPurchaseCostEstimation,createPurchaseCostEstimation}from "../e2e/MGM/Purchase/purchase_cost_estimation_helper";
 
 
 Cypress.Commands.add("createPurchaseCostEstimation",(Exchange_Rate,Frieght_Rate,CF_Rate,Margin_Rate,CD_Rate,Quantity,PFI_Price,custtomer_price)=>{

@@ -1,5 +1,5 @@
 //login to dev mgm
-export const devlogin = (userId, password) => {
+export const login = (userId, password) => {
     const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
     Cypress.on("uncaught:exception", (err) => {
       /* returning false here prevents Cypress from failing the test */
@@ -8,15 +8,15 @@ export const devlogin = (userId, password) => {
       }
     });
     cy.viewport(1920, 1080);
-    cy.visit("https://devmgm.ibos.io/");
+    cy.visit("https://mgm.ibos.io/");
         cy.get("#loginMobileNo").eq(0).click({force:true}).type(userId);
         cy.get("#loginPassword").eq(0).click({force:true}).type(password);
         cy.get("form").submit();
         cy.wait(1000);
-        cy.get("#branchList > div")
-        .click({ force: true })
-        .get("#react-select-mgm-option-0")
-        .type("{enter}",{force: true});
+        // cy.get("#branchList > div")
+        // .click({ force: true })
+        // .get("#react-select-mgm-option-0")
+        // .type("{enter}",{force: true});
         cy.wait(2000);
   };
 
@@ -272,4 +272,46 @@ export const DirectSupplierPaymentByBank = (quantity,rate,discount,VAT,AIT) => {
     cy.wait(3000);
     cy.get('.MuiButtonBase-root').eq(3).click({force:true});
     cy.wait(1000);
+  };
+
+  //create foreign purchase order
+
+  export const createForeignPurchaseOrder = (quantity,rate,VAT,quantity1,rate1,VAT1) => {
+    const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+    Cypress.on("uncaught:exception", (err) => {
+      /* returning false here prevents Cypress from failing the test */
+      if (resizeObserverLoopErrRe.test(err.message)) {
+        return false;
+      }
+    });     
+    cy.visit("http://mgm.ibos.io/purchase/purchaseOrder/foreign/create");
+    cy.wait(1000);
+    //select supplier
+    cy.get("#supplier > div")
+    .click({ force: true })
+    .get("#react-select-mgm-option-0")
+    .type("{enter}",{force: true});
+    cy.wait(2000);
+    //select currency
+    cy.get("#currency > div")
+    .click({ force: true })
+    .get("#react-select-mgm-option-14")
+    .type("{enter}",{force: true});
+    cy.wait(2000);
+    cy.get('.form-control').eq(3).click({ force: true }).type("100");
+    cy.wait(2000);
+       //add item
+       cy.get("#item > div")
+       .click({ force: true })
+       .get("#react-select-mgm-option-0")
+       .type("{enter}",{force: true});
+       cy.wait(2000);
+       cy.get(".form-control").eq(6).click({force:true}).type("1");
+       cy.wait(1000);
+       cy.get(".form-control").eq(7).click({force:true}).type("10");
+       cy.wait(2000);
+       cy.get(".btn").eq(6).click({ force: true });
+       cy.wait(2000);
+    cy.get("form").submit();
+    cy.wait(2000);
   };
