@@ -180,7 +180,7 @@ Cypress.Commands.add("createBankAccount8", (accountName,bankAccountNumber,bankSh
   createBankAccount8(accountName,bankAccountNumber,bankShortName);
 })
 //mgm UI Commands
-import{PurchaseUI,SalesUI,AccountUI,InventoryUI,HrUI}from "../e2e/MGM/Mgm_UI_Helper";
+import{PurchaseUI,SalesUI,AccountUI,InventoryUI,HrUI}from "../e2e/MGM/MGM_UI/Mgm_UI_Helper";
 Cypress.Commands.add("PurchaseUI",()=>{
   PurchaseUI();
 })
