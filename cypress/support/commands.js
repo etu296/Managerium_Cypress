@@ -111,11 +111,15 @@ Cypress.Commands.add("collectionReceive", () => {
   collectionReceive();
 })
 
-import{createForeignPurchaseOrder,viewReceivePurchaseOrder,receivePurchaseOrder,approvePurchaseOrder,createPurchaseOrder,DirectSupplierPaymentByCash,DirectSupplierPaymentByBank,viewDevAccountingJournal}from "../e2e/MGM/Purchase/purchase_helper";
+import{addShippingDetailsInForeignPurchaseOrder,approveForeignPo,createForeignPurchaseOrder,viewReceivePurchaseOrder,receivePurchaseOrder,approvePurchaseOrder,createPurchaseOrder,DirectSupplierPaymentByCash,DirectSupplierPaymentByBank,viewDevAccountingJournal}from "../e2e/MGM/Purchase/purchase_helper";
 
 //Foreign purchase order
 Cypress.Commands.add("createForeignPurchaseOrder", () => {
   createForeignPurchaseOrder();
+})
+//approve foreign Purchase Order
+Cypress.Commands.add("approveForeignPo", () => {
+  approveForeignPo();
 })
 
 //purchase order
@@ -125,6 +129,10 @@ Cypress.Commands.add("createPurchaseOrder", (quantity,rate,VAT,quantity1,rate1,V
 //approve Purchase Order
 Cypress.Commands.add("approvePurchaseOrder", () => {
   approvePurchaseOrder();
+})
+//approve Purchase Order
+Cypress.Commands.add("addShippingDetailsInForeignPurchaseOrder", () => {
+  addShippingDetailsInForeignPurchaseOrder();
 })
 //Full Recevie item from created purchase order
 Cypress.Commands.add("receivePurchaseOrder", () => {
