@@ -352,7 +352,7 @@ export const DirectSupplierPaymentByBank = (quantity,rate,discount,VAT,AIT) => {
   cy.wait(1000);
   cy.get('.MuiButtonBase-root').eq(3).click({force:true});
   cy.wait(2000);
-  cy.get(".MuiSvgIcon-root").eq(29).click({force:true});
+  cy.get(".MuiSvgIcon-root").eq(34).click({force:true});
   cy.wait(2000);
   //add lc details
   cy.get(".btn").eq(3).click({force:true});
@@ -372,13 +372,18 @@ export const DirectSupplierPaymentByBank = (quantity,rate,discount,VAT,AIT) => {
   cy.get(".form-control").eq(6).click({force:true}).type("20",{force: true});
   cy.wait(2000);
    //select bankAcc
-   cy.get('[id="bankAcc"]').each(($element) => {
-    cy.wrap($element)
-      .click({ force: true })
-      .get("#react-select-mgm-option-2")
-      .should('exist') // Check if the element exists
-      .type("{enter}", { force: true });
-  });
+   cy.get("#bankAcc > div")
+   .click({ force: true })
+   .get("#react-select-mgm-option-0")
+   .type("{enter}",{force: true});
+   cy.wait(2000);
+  //  cy.get('[id="bankAcc"]').each(($element) => {
+  //   cy.wrap($element)
+  //     .click({ force: true })
+  //     .get("#react-select-mgm-option-2")
+  //     .should('exist') // Check if the element exists
+  //     .type("{enter}", { force: true });
+  // });
 
    cy.get('.MuiButtonBase-root').eq(2).click({force:true});
    cy.wait(2000);

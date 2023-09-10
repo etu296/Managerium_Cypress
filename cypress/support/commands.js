@@ -130,7 +130,7 @@ Cypress.Commands.add("createPurchaseOrder", (quantity,rate,VAT,quantity1,rate1,V
 Cypress.Commands.add("approvePurchaseOrder", () => {
   approvePurchaseOrder();
 })
-//approve Purchase Order
+//add Shipping Details In Foreign Purchase Orde
 Cypress.Commands.add("addShippingDetailsInForeignPurchaseOrder", () => {
   addShippingDetailsInForeignPurchaseOrder();
 })
