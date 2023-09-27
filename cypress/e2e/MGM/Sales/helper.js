@@ -13,10 +13,10 @@
         cy.get("#loginPassword").eq(0).click({force:true}).type(password);
         cy.get("form").submit();
         cy.wait(1000);
-        cy.get("#branchList > div")
-        .click({ force: true })
-        .get("#react-select-mgm-option-2")
-        .type("{enter}",{force: true});
+        // cy.get("#branchList > div")
+        // .click({ force: true })
+        // .get("#react-select-mgm-option-2")
+        // .type("{enter}",{force: true});
         cy.wait(2000);
   };
  
